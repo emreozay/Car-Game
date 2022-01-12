@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private float translateSpeed;
     [SerializeField] private float rotationSpeed;
+    private Vector3 velocity = Vector3.zero;
 
     private void FixedUpdate()
     {
@@ -19,11 +20,13 @@ public class CameraFollow : MonoBehaviour
     {
         var targetPosition = target.TransformPoint(offset);
         transform.position = Vector3.Lerp(transform.position, targetPosition, translateSpeed * Time.deltaTime);
+        //transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, translateSpeed * Time.deltaTime);
     }
     private void HandleRotation()
     {
         var direction = target.position - transform.position;
         var rotation = Quaternion.LookRotation(direction, Vector3.up);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        //transform.rotation = Quaternion.Euler(Vector3.SmoothDamp(transform.rotation.eulerAngles, rotation.eulerAngles, ref velocity, rotationSpeed * Time.deltaTime));
     }
 }
