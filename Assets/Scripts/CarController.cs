@@ -22,6 +22,20 @@ public class CarController : MonoBehaviour
     public float motorForce = 50f;
     public float brakeForce = 0f;
 
+    private Quaternion firstRotation;
+
+    private void Start()
+    {
+        firstRotation = transform.rotation;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            transform.rotation = firstRotation;
+        }
+    }
 
     private void FixedUpdate()
     {
