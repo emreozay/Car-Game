@@ -23,6 +23,7 @@ public class CarController : MonoBehaviour
     public float brakeForce = 0f;
 
     private Quaternion firstRotation;
+    public static bool isRestart;
 
     private void Start()
     {
@@ -31,7 +32,7 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) || isRestart)
         {
             transform.rotation = firstRotation;
         }
