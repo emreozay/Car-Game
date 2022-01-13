@@ -7,7 +7,7 @@ public class CarController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
     private float steerAngle;
-    private bool isBreaking;
+    public static bool isBreaking;
 
     public WheelCollider frontLeftWheelCollider;
     public WheelCollider frontRightWheelCollider;
@@ -47,9 +47,11 @@ public class CarController : MonoBehaviour
 
     private void GetInput()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-        isBreaking = Input.GetKey(KeyCode.Space);
+        horizontalInput = SimpleInput.GetAxis("Horizontal"); /*Input.GetAxis("Horizontal");*/
+        verticalInput = SimpleInput.GetAxis("Vertical");/*Input.GetAxis("Vertical");*/
+
+
+        //isBreaking = Input.GetKey(KeyCode.Space);
     }
 
     private void HandleSteering()
