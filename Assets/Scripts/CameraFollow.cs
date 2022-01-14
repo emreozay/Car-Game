@@ -10,6 +10,11 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     private Vector3 velocity = Vector3.zero;
 
+    private void Start()
+    {
+        target = target.GetChild(PlayerPrefs.GetInt("SelectedCar", 0));
+    }
+
     private void FixedUpdate()
     {
         HandleTranslation();
