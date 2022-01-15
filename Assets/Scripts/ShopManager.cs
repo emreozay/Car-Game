@@ -15,6 +15,7 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.SetInt("Money", 1000);
         UpdateMoneyText();
 
         foreach (CarBlueprint car in cars)
