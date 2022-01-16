@@ -24,6 +24,7 @@ public class CarController : MonoBehaviour
 
     private Quaternion firstRotation;
     public static bool isRestart;
+    public static float carSpeed;
 
     private void Start()
     {
@@ -64,6 +65,8 @@ public class CarController : MonoBehaviour
 
     private void HandleMotor()
     {
+        carSpeed = GetComponent<Rigidbody>().velocity.magnitude;
+
         frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
         frontRightWheelCollider.motorTorque = verticalInput * motorForce;
         rearLeftWheelCollider.motorTorque = verticalInput * motorForce;
@@ -74,6 +77,8 @@ public class CarController : MonoBehaviour
         frontRightWheelCollider.brakeTorque = brakeForce;
         rearLeftWheelCollider.brakeTorque = brakeForce;
         rearRightWheelCollider.brakeTorque = brakeForce;
+
+        //carSpeed = frontLeftWheelCollider.rpm;
     }
 
     private void UpdateWheels()
