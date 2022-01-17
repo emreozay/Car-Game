@@ -1,22 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MyCarSound : MonoBehaviour
 {
     AudioSource audioSource;
+
     public float minPitch = 0.05f;
     public float maxPitch = 3f;
     private float pitchFromCar;
 
-    // Start is called before the first frame update
+    public static UnityEvent soundOffEvent;
+    public static UnityEvent soundOnEvent;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.pitch = minPitch;
+
+        if (soundOffEvent == null)
+            soundOffEvent = new UnityEvent();
+
+        soundOffEvent.AddListener(SoundOff);
+
+        if (soundOnEvent == null)
+            soundOnEvent = new UnityEvent();
+
+        soundOnEvent.AddListener(SoundOn);
     }
 
-    // Update is called once per frame
     void Update()
     {
         pitchFromCar = CarController.carSpeed / 20;
@@ -25,5 +38,15 @@ public class MyCarSound : MonoBehaviour
             audioSource.pitch = minPitch;
         else
             audioSource.pitch = pitchFromCar;
+    }
+
+    private void SoundOff()
+    {
+        audioSource.Stop();
+    }
+
+    private void SoundOn()
+    {
+        audioSource.Play();
     }
 }

@@ -26,6 +26,9 @@ public class CarController : MonoBehaviour
     public static bool isRestart;
     public static float carSpeed;
 
+    private float distanceGround = 5f;
+    private bool isGrounded = false;
+
     private void Start()
     {
         firstRotation = transform.rotation;
@@ -45,6 +48,20 @@ public class CarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+        GroundCheck();
+    }
+
+    private void GroundCheck()
+    {
+        if (!Physics.Raycast(transform.position + Vector3.up, Vector3.down, distanceGround))
+        {
+            isGrounded = false;
+            UIController.gameOverEvent.Invoke();
+        }
+        else
+        {
+            isGrounded = true;
+        }
     }
 
     private void GetInput()
@@ -96,5 +113,13 @@ public class CarController : MonoBehaviour
         wheelCollider.GetWorldPose(out pos, out rot);
         trans.rotation = rot;
         trans.position = pos;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.CompareTag("Finish"))
+        {
+            UIController.finishEvent.Invoke();
+        }
     }
 }
