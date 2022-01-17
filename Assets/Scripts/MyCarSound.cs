@@ -20,7 +20,7 @@ public class MyCarSound : MonoBehaviour
     void Update()
     {
         pitchFromCar = CarController.carSpeed / 20;
-        print(pitchFromCar);
+        
         if (pitchFromCar < minPitch)
             audioSource.pitch = minPitch;
         else
