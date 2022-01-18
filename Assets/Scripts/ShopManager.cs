@@ -11,11 +11,12 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Button buyButton;
     [SerializeField] private CarBlueprint[] cars;
     [SerializeField] private TextMeshProUGUI moneyText;
+    [SerializeField] private Button startButton;
 
 
     void Start()
     {
-        PlayerPrefs.SetInt("Money", 1000);
+        PlayerPrefs.SetInt("Money", 1000); // Don't forget to delete!!!
         UpdateMoneyText();
 
         foreach (CarBlueprint car in cars)
@@ -103,11 +104,14 @@ public class ShopManager : MonoBehaviour
 
         if (c.isUnlocked)
         {
+            startButton.gameObject.SetActive(true);
             buyButton.gameObject.SetActive(false);
         }
         else
         {
             buyButton.gameObject.SetActive(true);
+            startButton.gameObject.SetActive(false);
+
             buyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Buy - $" + c.price;
 
             if (c.price <= PlayerPrefs.GetInt("Money", 0))
