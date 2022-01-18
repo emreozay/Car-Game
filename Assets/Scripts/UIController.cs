@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = 1;
 
-        timeLeft = 10 * SceneManager.GetActiveScene().buildIndex;
+        timeLeft = 30 * SceneManager.GetActiveScene().buildIndex;
 
         if(finishPanel != null)
             finishPanel.SetActive(false);
@@ -112,7 +112,8 @@ public class UIController : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if(SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Finish()
