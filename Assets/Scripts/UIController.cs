@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -11,13 +12,18 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject finishPanel;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TextMeshProUGUI timeText;
 
     public static UnityEvent finishEvent;
     public static UnityEvent gameOverEvent;
 
+    private float timeLeft = 5f;
+
     private void Start()
     {
         Time.timeScale = 1;
+
+        timeLeft = 10 * SceneManager.GetActiveScene().buildIndex;
 
         if(finishPanel != null)
             finishPanel.SetActive(false);
@@ -31,6 +37,17 @@ public class UIController : MonoBehaviour
             gameOverEvent = new UnityEvent();
 
         gameOverEvent.AddListener(GameOver);
+    }
+
+    private void Update()
+    {
+        timeLeft -= Time.deltaTime;
+        if(timeText != null)
+        {
+            timeText.text = timeLeft.ToString("0.00");
+            if (timeLeft <= 0f)
+                GameOver();
+        }
     }
 
     public void StopButton()
@@ -109,7 +126,11 @@ public class UIController : MonoBehaviour
     public void GameOver()
     {
         MyCarSound.soundOffEvent.Invoke();
-        Invoke("GameOverDelay", 2);
+
+        if (timeLeft > 0)
+            Invoke("GameOverDelay", 1.5f);
+        else
+            GameOverDelay();
     }
 
     public void GameOverDelay()
