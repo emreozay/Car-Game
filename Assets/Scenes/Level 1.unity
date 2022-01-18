@@ -977,6 +977,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8135436751504827091, guid: 094c623c741b8984aa7b1d5ceb5e2a8c, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 91cea1ef6b2a66e46b7e0c4083dbca4e, type: 3}
+    - target: {fileID: 8135436751504827092, guid: 094c623c741b8984aa7b1d5ceb5e2a8c, type: 3}
+      propertyPath: minPitch
+      value: 1.16
+      objectReference: {fileID: 0}
     - target: {fileID: 8135436751504827103, guid: 094c623c741b8984aa7b1d5ceb5e2a8c, type: 3}
       propertyPath: m_Name
       value: CarHolder
