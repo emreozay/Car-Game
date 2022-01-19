@@ -24,10 +24,10 @@ public class CameraFollow : MonoBehaviour
     private void HandleTranslation()
     {
         var targetPosition = target.TransformPoint(offset);
-        if (targetPosition.y < 4)
-        {
-            targetPosition = new Vector3(targetPosition.x, 4f, targetPosition.z);
-        }
+        //if (targetPosition.y < 4)
+        //{
+        //    targetPosition = new Vector3(targetPosition.x, 4f, targetPosition.z);
+        //}
 
         transform.position = Vector3.Lerp(transform.position, targetPosition, translateSpeed * Time.deltaTime);
    
