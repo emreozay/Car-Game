@@ -74,7 +74,7 @@ public class UIController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(PlayerPrefs.GetInt("Level", 1));
     }
 
     public void PlayButton()
@@ -120,6 +120,8 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = 0;
         MyCarSound.soundOffEvent.Invoke();
+
+        PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex + 1);
 
         finishPanel.SetActive(true);
     }
