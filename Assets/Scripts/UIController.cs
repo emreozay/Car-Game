@@ -21,6 +21,8 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.DeleteKey("Level");
+
         Time.timeScale = 1;
 
         timeLeft = 30 * SceneManager.GetActiveScene().buildIndex;
@@ -114,6 +116,8 @@ public class UIController : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        InterstitialAd.interstitialAdEvent.Invoke();
     }
 
     public void Finish()
