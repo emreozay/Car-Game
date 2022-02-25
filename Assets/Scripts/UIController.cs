@@ -116,8 +116,6 @@ public class UIController : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
-        InterstitialAd.interstitialAdEvent.Invoke();
     }
 
     public void Finish()
@@ -143,6 +141,14 @@ public class UIController : MonoBehaviour
     public void GameOverDelay()
     {
         Time.timeScale = 0;
+
+        PlayerPrefs.SetInt("AdCounter", PlayerPrefs.GetInt("AdCounter", 0) + 1);
+        if (PlayerPrefs.GetInt("AdCounter", 0) >= 2)
+        {
+            InterstitialAd.interstitialAdEvent.Invoke();
+            PlayerPrefs.SetInt("AdCounter", 0);
+        }
+
         gameOverPanel.SetActive(true);
     }
 

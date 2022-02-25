@@ -120,6 +120,13 @@ public class CarController : MonoBehaviour
         if (other.transform.CompareTag("Finish"))
         {
             UIController.finishEvent.Invoke();
+
+            PlayerPrefs.SetInt("AdCounter", PlayerPrefs.GetInt("AdCounter", 0) + 1);
+            if (PlayerPrefs.GetInt("AdCounter", 0) >= 2)
+            {
+                InterstitialAd.interstitialAdEvent.Invoke();
+                PlayerPrefs.SetInt("AdCounter", 0);
+            }
         }
     }
 }
