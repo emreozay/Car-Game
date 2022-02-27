@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class ShopManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI moneyText;
     [SerializeField] private Button startButton;
 
+    public static UnityEvent moneyTextEvent;
 
     void Start()
     {
@@ -34,16 +36,13 @@ public class ShopManager : MonoBehaviour
             car.SetActive(false);
         }
         carModels[currentCarIndex].SetActive(true);
-    }
 
-    void Update()
-    {
         UpdateUI();
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money", 0) + 20);
-            UpdateMoneyText();
-        }
+
+        if (moneyTextEvent == null)
+            moneyTextEvent = new UnityEvent();
+
+        moneyTextEvent.AddListener(UpdateMoneyText);
     }
 
     public void ChangeNextCar()
@@ -55,6 +54,8 @@ public class ShopManager : MonoBehaviour
             currentCarIndex = 0;
 
         carModels[currentCarIndex].SetActive(true);
+
+        UpdateUI();
 
         CarBlueprint c = cars[currentCarIndex];
         if (!c.isUnlocked)
@@ -72,6 +73,8 @@ public class ShopManager : MonoBehaviour
             currentCarIndex = carModels.Length - 1;
 
         carModels[currentCarIndex].SetActive(true);
+
+        UpdateUI();
 
         CarBlueprint c = cars[currentCarIndex];
         if (!c.isUnlocked)
