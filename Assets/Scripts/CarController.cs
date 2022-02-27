@@ -17,6 +17,8 @@ public class CarController : MonoBehaviour
     public Transform frontRightWheelTransform;
     public Transform rearLeftWheelTransform;
     public Transform rearRightWheelTransform;
+
+    [SerializeField] private GameObject centerOfMass;
     
     public float maxSteeringAngle = 30f;
     public float motorForce = 50f;
@@ -32,6 +34,9 @@ public class CarController : MonoBehaviour
     private void Start()
     {
         firstRotation = transform.rotation;
+
+        if(centerOfMass != null)
+            GetComponent<Rigidbody>().centerOfMass = centerOfMass.transform.localPosition;
     }
 
     private void Update()
@@ -40,6 +45,7 @@ public class CarController : MonoBehaviour
         {
             transform.rotation = firstRotation;
         }
+        print(GetComponent<Rigidbody>().centerOfMass);
     }
 
     private void FixedUpdate()

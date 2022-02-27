@@ -2104,6 +2104,7 @@ MonoBehaviour:
   pausePanel: {fileID: 2118991462}
   finishPanel: {fileID: 0}
   gameOverPanel: {fileID: 0}
+  timeText: {fileID: 0}
 --- !u!4 &1511801993
 Transform:
   m_ObjectHideFlags: 0
