@@ -16,7 +16,7 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetInt("Money", 1000); // Don't forget to delete!!!
+        //PlayerPrefs.SetInt("Money", 1000); // Don't forget to delete!!!
         UpdateMoneyText();
 
         foreach (CarBlueprint car in cars)
@@ -95,7 +95,7 @@ public class ShopManager : MonoBehaviour
 
     private void UpdateMoneyText()
     {
-        moneyText.text = "$" + PlayerPrefs.GetInt("Money", 0);
+        moneyText.text = PlayerPrefs.GetInt("Money", 0).ToString();
     }
 
     private void UpdateUI()
@@ -112,7 +112,7 @@ public class ShopManager : MonoBehaviour
             buyButton.gameObject.SetActive(true);
             startButton.gameObject.SetActive(false);
 
-            buyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Buy - $" + c.price;
+            buyButton.GetComponentInChildren<TextMeshProUGUI>().text = c.price.ToString();
 
             if (c.price <= PlayerPrefs.GetInt("Money", 0))
             {

@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject finishPanel;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject shopPanel;
     [SerializeField] private TextMeshProUGUI timeText;
 
     public static UnityEvent finishEvent;
@@ -21,8 +22,6 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.DeleteKey("Level");
-
         Time.timeScale = 1;
 
         timeLeft = 30 * SceneManager.GetActiveScene().buildIndex;
@@ -81,14 +80,21 @@ public class UIController : MonoBehaviour
 
     public void PlayButton()
     {
-        mainMenuPanel.SetActive(false);
         carSelectionPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
     }
 
     public void BackButton()
     {
         mainMenuPanel.SetActive(true);
         carSelectionPanel.SetActive(false);
+        shopPanel.SetActive(false);
+    }
+
+    public void ShopButton()
+    {
+        shopPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
     }
 
     public void PauseButton()

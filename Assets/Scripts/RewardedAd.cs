@@ -65,6 +65,8 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
             Debug.Log("Unity Ads Rewarded Ad Completed");
+
+            PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 20);
             // Grant a reward.
 
             // Load another ad:
