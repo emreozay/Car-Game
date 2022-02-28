@@ -19,6 +19,11 @@ public class MyCarSound : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.pitch = minPitch;
 
+        if (PlayerPrefs.GetInt("Sound", 1) == 0)
+            SoundOff();
+        else
+            SoundOn();
+
         if (soundOffEvent == null)
             soundOffEvent = new UnityEvent();
 
@@ -42,11 +47,11 @@ public class MyCarSound : MonoBehaviour
 
     private void SoundOff()
     {
-        audioSource.Stop();
+        audioSource.volume = 0;
     }
 
     private void SoundOn()
     {
-        audioSource.Play();
+        audioSource.volume = 1;
     }
 }

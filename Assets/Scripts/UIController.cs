@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private TextMeshProUGUI timeText;
+
+    private Button soundOnButton;
+    private Button soundOffButton;
 
     public static UnityEvent finishEvent;
     public static UnityEvent gameOverEvent;
@@ -38,6 +42,18 @@ public class UIController : MonoBehaviour
             gameOverEvent = new UnityEvent();
 
         gameOverEvent.AddListener(GameOver);
+
+        if(pausePanel != null)
+        {
+            soundOnButton = pausePanel.transform.Find("SoundOnButton").GetComponent<Button>();
+            soundOffButton = pausePanel.transform.Find("SoundOffButton").GetComponent<Button>();
+        }
+
+        if(soundOnButton != null)
+            soundOnButton.onClick.AddListener(SoundOn);
+
+        if(soundOffButton != null)
+            soundOffButton.onClick.AddListener(SoundOff);
     }
 
     private void Update()
@@ -49,6 +65,18 @@ public class UIController : MonoBehaviour
             if (timeLeft <= 0f)
                 GameOver();
         }
+    }
+
+    private void SoundOn()
+    {
+        PlayerPrefs.SetInt("Sound", 1);
+        MyCarSound.soundOnEvent.Invoke();
+    }
+
+    private void SoundOff()
+    {
+        PlayerPrefs.SetInt("Sound", 0);
+        MyCarSound.soundOffEvent.Invoke();
     }
 
     public void StopButton()
@@ -99,8 +127,8 @@ public class UIController : MonoBehaviour
 
     public void PauseButton()
     {
-        Time.timeScale = 0;
         MyCarSound.soundOffEvent.Invoke();
+        Time.timeScale = 0;
 
         pausePanel.SetActive(true);
     }
@@ -108,9 +136,10 @@ public class UIController : MonoBehaviour
     public void ContinueButton()
     {
         pausePanel.SetActive(false);
-
-        MyCarSound.soundOnEvent.Invoke();
         Time.timeScale = 1;
+
+        if (PlayerPrefs.GetInt("Sound", 1) == 1)
+            MyCarSound.soundOnEvent.Invoke();
     }
 
     public void HomeButton()
