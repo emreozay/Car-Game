@@ -18,6 +18,8 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
+        //PlayerPrefs.DeleteAll();
+
         //PlayerPrefs.SetInt("Money", 1000); // Don't forget to delete!!!
         UpdateMoneyText();
 
@@ -94,6 +96,7 @@ public class ShopManager : MonoBehaviour
 
         PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money", 0) - c.price);
         UpdateMoneyText();
+        UpdateUI();
     }
 
     private void UpdateMoneyText()
