@@ -42,6 +42,7 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
 
         if (adUnitId.Equals(_adUnitId))
         {
+            print("ADD Listener");
             // Configure the button to call the ShowAd() method when clicked:
             _showAdButton.onClick.AddListener(ShowAd);
             // Enable the button for users to click:
@@ -56,7 +57,8 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         //_showAdButton.interactable = false;
         // Then show the ad:
         Advertisement.Show(_adUnitId, this);
-        LoadAd();
+
+        //LoadAd();
     }
 
     // Implement the Show Listener's OnUnityAdsShowComplete callback method to determine if the user gets a reward:
@@ -66,7 +68,7 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         {
             Debug.Log("Unity Ads Rewarded Ad Completed");
 
-            PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 20);
+            PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money") + 125);
             ShopManager.moneyTextEvent.Invoke();
             // Grant a reward.
 
@@ -94,7 +96,6 @@ public class RewardedAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     void OnDestroy()
     {
         // Clean up the button listeners:
-        if (_showAdButton != null)
-            _showAdButton.onClick.RemoveAllListeners();
+        _showAdButton.onClick.RemoveAllListeners();
     }
 }
