@@ -45,8 +45,8 @@ public class UIController : MonoBehaviour
 
         if(pausePanel != null)
         {
-            soundOnButton = pausePanel.transform.Find("SoundOnButton").GetComponent<Button>();
-            soundOffButton = pausePanel.transform.Find("SoundOffButton").GetComponent<Button>();
+            soundOnButton = pausePanel.transform.GetChild(0).transform.Find("SoundOnButton").GetComponent<Button>();
+            soundOffButton = pausePanel.transform.GetChild(0).transform.Find("SoundOffButton").GetComponent<Button>();
         }
 
         if(soundOnButton != null)
