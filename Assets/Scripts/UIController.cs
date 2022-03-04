@@ -18,6 +18,7 @@ public class UIController : MonoBehaviour
 
     private Button soundOnButton;
     private Button soundOffButton;
+    private Button closePausePanelButton;
 
     public static UnityEvent finishEvent;
     public static UnityEvent gameOverEvent;
@@ -47,6 +48,8 @@ public class UIController : MonoBehaviour
         {
             soundOnButton = pausePanel.transform.GetChild(0).transform.Find("SoundOnButton").GetComponent<Button>();
             soundOffButton = pausePanel.transform.GetChild(0).transform.Find("SoundOffButton").GetComponent<Button>();
+
+            closePausePanelButton = pausePanel.transform.GetChild(0).transform.Find("CloseButton").GetComponent<Button>();
         }
 
         if(soundOnButton != null)
@@ -54,6 +57,9 @@ public class UIController : MonoBehaviour
 
         if(soundOffButton != null)
             soundOffButton.onClick.AddListener(SoundOff);
+
+        if (closePausePanelButton != null)
+            closePausePanelButton.onClick.AddListener(ContinueButton);
     }
 
     private void Update()
@@ -70,13 +76,13 @@ public class UIController : MonoBehaviour
     private void SoundOn()
     {
         PlayerPrefs.SetInt("Sound", 1);
-        MyCarSound.soundOnEvent.Invoke();
+        //MyCarSound.soundOnEvent.Invoke();
     }
 
     private void SoundOff()
     {
         PlayerPrefs.SetInt("Sound", 0);
-        MyCarSound.soundOffEvent.Invoke();
+        //MyCarSound.soundOffEvent.Invoke();
     }
 
     public void StopButton()
