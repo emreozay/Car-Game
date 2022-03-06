@@ -23,11 +23,14 @@ public class UIController : MonoBehaviour
     public static UnityEvent finishEvent;
     public static UnityEvent gameOverEvent;
 
+    private bool isGameOver = false;
+
     private float timeLeft = 5f;
 
     private void Start()
     {
         Time.timeScale = 1;
+        isGameOver = false;
 
         timeLeft = 30 * SceneManager.GetActiveScene().buildIndex;
 
@@ -60,15 +63,27 @@ public class UIController : MonoBehaviour
 
         if (closePausePanelButton != null)
             closePausePanelButton.onClick.AddListener(ContinueButton);
+
+        if (PlayerPrefs.GetInt("Sound", 1) == 1)
+        {
+            soundOnButton.interactable = false;
+            soundOffButton.interactable = true;
+        }
+        else
+        {
+            soundOnButton.interactable = true;
+            soundOffButton.interactable = false;
+        }
     }
 
     private void Update()
     {
         timeLeft -= Time.deltaTime;
+
         if(timeText != null)
         {
             timeText.text = timeLeft.ToString("0.00");
-            if (timeLeft <= 0f)
+            if (timeLeft <= 0f && !isGameOver)
                 GameOver();
         }
     }
@@ -76,12 +91,18 @@ public class UIController : MonoBehaviour
     private void SoundOn()
     {
         PlayerPrefs.SetInt("Sound", 1);
+        
+        soundOnButton.interactable = false;
+        soundOffButton.interactable = true;
         //MyCarSound.soundOnEvent.Invoke();
     }
 
     private void SoundOff()
     {
         PlayerPrefs.SetInt("Sound", 0);
+
+        soundOnButton.interactable = true;
+        soundOffButton.interactable = false;
         //MyCarSound.soundOffEvent.Invoke();
     }
 
@@ -173,6 +194,8 @@ public class UIController : MonoBehaviour
     {
         MyCarSound.soundOffEvent.Invoke();
 
+        isGameOver = true;
+
         if (timeLeft > 0)
             Invoke("GameOverDelay", 1.5f);
         else
@@ -182,15 +205,21 @@ public class UIController : MonoBehaviour
     public void GameOverDelay()
     {
         Time.timeScale = 0;
-
+        print("BURADA 1");
         PlayerPrefs.SetInt("AdCounter", PlayerPrefs.GetInt("AdCounter", 0) + 1);
-        if (PlayerPrefs.GetInt("AdCounter", 0) >= 2)
+        if (PlayerPrefs.GetInt("AdCounter", 0) >= 3)
         {
-            InterstitialAd.interstitialAdEvent.Invoke();
-            PlayerPrefs.SetInt("AdCounter", 0);
+            if(InterstitialAd.interstitialAdEvent != null)
+            {
+                InterstitialAd.interstitialAdEvent.Invoke();
+                PlayerPrefs.SetInt("AdCounter", 0);
+            }
         }
+        print("BURADA 2");
 
         gameOverPanel.SetActive(true);
+        print("BURADA 3");
+
     }
 
     public void RestartLevel()

@@ -127,6 +127,8 @@ public class CarController : MonoBehaviour
         {
             UIController.finishEvent.Invoke();
 
+            PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money", 0) + 100);
+
             PlayerPrefs.SetInt("AdCounter", PlayerPrefs.GetInt("AdCounter", 0) + 1);
             if (PlayerPrefs.GetInt("AdCounter", 0) >= 2)
             {
