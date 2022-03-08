@@ -32,7 +32,7 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1;
         isGameOver = false;
 
-        timeLeft = 30 * SceneManager.GetActiveScene().buildIndex;
+        timeLeft = 5 * SceneManager.GetActiveScene().buildIndex + 15;
 
         if(finishPanel != null)
             finishPanel.SetActive(false);
@@ -185,7 +185,8 @@ public class UIController : MonoBehaviour
         Time.timeScale = 0;
         MyCarSound.soundOffEvent.Invoke();
 
-        PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex + 1);
+        if(PlayerPrefs.GetInt("Level", 0) != 30)
+            PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex + 1);
 
         finishPanel.SetActive(true);
     }
