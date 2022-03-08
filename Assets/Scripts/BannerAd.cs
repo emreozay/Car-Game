@@ -11,6 +11,9 @@ public class BannerAd : MonoBehaviour
     [SerializeField] string _iOSAdUnitId = "Banner_iOS";
     string _adUnitId = null; // This will remain null for unsupported platforms.
 
+    [SerializeField] private GameObject shopPanel;
+    [SerializeField] private GameObject gamePanel;
+
     private Scene scene;
 
     private void Awake()
@@ -31,6 +34,7 @@ public class BannerAd : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.DeleteAll();
         // Get the Ad Unit ID for the current platform:
 #if UNITY_IOS
         _adUnitId = _iOSAdUnitId;
@@ -42,6 +46,17 @@ public class BannerAd : MonoBehaviour
         Advertisement.Banner.SetPosition(_bannerPosition);
 
         LoadBanner();
+    }
+
+    private void Update()
+    {
+        if(shopPanel != null && gamePanel != null)
+        {
+            if (shopPanel.activeSelf || gamePanel.activeSelf)
+                Advertisement.Banner.Hide();
+            else
+                Advertisement.Banner.Show(_adUnitId);
+        }
     }
 
     // Implement a method to call when the Load Banner button is clicked:

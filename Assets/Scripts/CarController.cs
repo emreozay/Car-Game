@@ -45,7 +45,6 @@ public class CarController : MonoBehaviour
         {
             transform.rotation = firstRotation;
         }
-        print(GetComponent<Rigidbody>().centerOfMass);
     }
 
     private void FixedUpdate()

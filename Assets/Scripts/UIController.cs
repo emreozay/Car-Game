@@ -64,15 +64,18 @@ public class UIController : MonoBehaviour
         if (closePausePanelButton != null)
             closePausePanelButton.onClick.AddListener(ContinueButton);
 
-        if (PlayerPrefs.GetInt("Sound", 1) == 1)
+        if(soundOnButton != null && soundOffButton != null)
         {
-            soundOnButton.interactable = false;
-            soundOffButton.interactable = true;
-        }
-        else
-        {
-            soundOnButton.interactable = true;
-            soundOffButton.interactable = false;
+            if (PlayerPrefs.GetInt("Sound", 1) == 1)
+            {
+                soundOnButton.interactable = false;
+                soundOffButton.interactable = true;
+            }
+            else
+            {
+                soundOnButton.interactable = true;
+                soundOffButton.interactable = false;
+            }
         }
     }
 
