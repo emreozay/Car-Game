@@ -209,7 +209,7 @@ public class UIController : MonoBehaviour
     public void GameOverDelay()
     {
         Time.timeScale = 0;
-        print("BURADA 1");
+        
         PlayerPrefs.SetInt("AdCounter", PlayerPrefs.GetInt("AdCounter", 0) + 1);
         if (PlayerPrefs.GetInt("AdCounter", 0) >= 3)
         {
@@ -219,11 +219,8 @@ public class UIController : MonoBehaviour
                 PlayerPrefs.SetInt("AdCounter", 0);
             }
         }
-        print("BURADA 2");
 
         gameOverPanel.SetActive(true);
-        print("BURADA 3");
-
     }
 
     public void RestartLevel()

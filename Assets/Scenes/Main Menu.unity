@@ -1178,7 +1178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: com.SGameStudio.NewUnityProject.money2000
+  productId: com.sgamestudio.carparkourmegastuntgame.money2000
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:
@@ -3576,7 +3576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: com.SGameStudio.NewUnityProject.money1000
+  productId: com.sgamestudio.carparkourmegastuntgame.money1000
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:
@@ -5481,7 +5481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: com.SGameStudio.NewUnityProject.money1500
+  productId: com.sgamestudio.carparkourmegastuntgame.money1500
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:
@@ -7236,7 +7236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a5f511b0d8142cba0aeb92d0b264c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productId: com.SGameStudio.NewUnityProject.money500
+  productId: com.sgamestudio.carparkourmegastuntgame.money500
   buttonType: 0
   consumePurchase: 1
   onPurchaseComplete:

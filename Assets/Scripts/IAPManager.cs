@@ -5,10 +5,10 @@ using UnityEngine.Purchasing;
 
 public class IAPManager : MonoBehaviour
 {
-    private string money500 = "com.SGameStudio.NewUnityProject.money500"; //Change it later!!!
-    private string money1000 = "com.SGameStudio.NewUnityProject.money1000"; //Change it later!!!
-    private string money1500 = "com.SGameStudio.NewUnityProject.money1500"; //Change it later!!!
-    private string money2000 = "com.SGameStudio.NewUnityProject.money2000"; //Change it later!!!
+    private string money500 = "com.sgamestudio.carparkourmegastuntgame.money500"; //Change it later!!!
+    private string money1000 = "com.sgamestudio.carparkourmegastuntgame.money1000"; //Change it later!!!
+    private string money1500 = "com.sgamestudio.carparkourmegastuntgame.money1500"; //Change it later!!!
+    private string money2000 = "com.sgamestudio.carparkourmegastuntgame.money2000"; //Change it later!!!
 
     public void OnPurchaseComplete(Product product)
     {
