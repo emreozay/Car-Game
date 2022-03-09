@@ -34,7 +34,6 @@ public class BannerAd : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.DeleteAll();
         // Get the Ad Unit ID for the current platform:
 #if UNITY_IOS
         _adUnitId = _iOSAdUnitId;
