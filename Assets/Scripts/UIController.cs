@@ -92,6 +92,11 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     private void SoundOn()
     {
         PlayerPrefs.SetInt("Sound", 1);
