@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
 
 public class UIController : MonoBehaviour
 {
@@ -98,6 +99,14 @@ public class UIController : MonoBehaviour
         soundOnButton.interactable = false;
         soundOffButton.interactable = true;
         //MyCarSound.soundOnEvent.Invoke();
+
+        AnalyticsResult analyticsResult = Analytics.CustomEvent(
+            "Sound",
+            new Dictionary<string, object> {
+                {"Sound", PlayerPrefs.GetInt("Sound", 0)}
+            }
+            );
+        print("AnalyticsResult Sound: " + analyticsResult);
     }
 
     private void SoundOff()
@@ -107,6 +116,14 @@ public class UIController : MonoBehaviour
         soundOnButton.interactable = true;
         soundOffButton.interactable = false;
         //MyCarSound.soundOffEvent.Invoke();
+
+        AnalyticsResult analyticsResult = Analytics.CustomEvent(
+            "Sound",
+            new Dictionary<string, object> {
+                {"Sound", PlayerPrefs.GetInt("Sound", 0)}
+            }
+            );
+        print("AnalyticsResult Sound: " + analyticsResult);
     }
 
     public void StopButton()
@@ -188,7 +205,15 @@ public class UIController : MonoBehaviour
         Time.timeScale = 0;
         MyCarSound.soundOffEvent.Invoke();
 
-        if(PlayerPrefs.GetInt("Level", 0) != 30)
+        AnalyticsResult analyticsResult = Analytics.CustomEvent(
+            "WinLevel",
+            new Dictionary<string, object> {
+                {"Level", PlayerPrefs.GetInt("Level", 0)}
+            }
+            );
+        print("AnalyticsResult Win: " + analyticsResult);
+
+        if (PlayerPrefs.GetInt("Level", 0) != 30)
             PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex + 1);
 
         finishPanel.SetActive(true);
@@ -209,7 +234,15 @@ public class UIController : MonoBehaviour
     public void GameOverDelay()
     {
         Time.timeScale = 0;
-        
+
+        AnalyticsResult analyticsResult = Analytics.CustomEvent(
+            "LoseLevel",
+            new Dictionary<string, object> {
+                {"Level", PlayerPrefs.GetInt("Level", 0)}
+            }
+            );
+        print("AnalyticsResult Lose: " + analyticsResult);
+
         PlayerPrefs.SetInt("AdCounter", PlayerPrefs.GetInt("AdCounter", 0) + 1);
         if (PlayerPrefs.GetInt("AdCounter", 0) >= 3)
         {
@@ -225,6 +258,14 @@ public class UIController : MonoBehaviour
 
     public void RestartLevel()
     {
+        AnalyticsResult analyticsResult = Analytics.CustomEvent(
+            "RestartLevel",
+            new Dictionary<string, object> {
+                {"Level", PlayerPrefs.GetInt("Level", 0)}
+            }
+            );
+        print("AnalyticsResult Restart: " + analyticsResult);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
