@@ -28,7 +28,7 @@ public class CarController : MonoBehaviour
     public static bool isRestart;
     public static float carSpeed;
 
-    private float distanceGround = 5f;
+    private float distanceGround = 250f;
     private bool isGrounded = false;
 
     private void Start()
