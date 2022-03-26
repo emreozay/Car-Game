@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject finishPanel;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject shopPanel;
+    [SerializeField] private GameObject levelSelectionPanel;
     [SerializeField] private TextMeshProUGUI timeText;
 
     private Button soundOnButton;
@@ -131,6 +132,18 @@ public class UIController : MonoBehaviour
         print("AnalyticsResult Sound: " + analyticsResult);
     }
 
+    public void SelectLevel()
+    {
+        levelSelectionPanel.SetActive(true);
+        carSelectionPanel.SetActive(false);
+    }
+
+    public void BackToCarSelection()
+    {
+        carSelectionPanel.SetActive(true);
+        levelSelectionPanel.SetActive(false);
+    }
+
     public void StopButton()
     {
         CarController.isBreaking = true;
@@ -213,12 +226,12 @@ public class UIController : MonoBehaviour
         AnalyticsResult analyticsResult = Analytics.CustomEvent(
             "WinLevel",
             new Dictionary<string, object> {
-                {"Level", PlayerPrefs.GetInt("Level", 0)}
+                {"Level", PlayerPrefs.GetInt("Level", 1)}
             }
             );
         print("AnalyticsResult Win: " + analyticsResult);
 
-        if (PlayerPrefs.GetInt("Level", 0) != 30)
+        if (PlayerPrefs.GetInt("Level", 1) != 30 && PlayerPrefs.GetInt("Level", 1) < SceneManager.GetActiveScene().buildIndex + 1)
             PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex + 1);
 
         finishPanel.SetActive(true);
