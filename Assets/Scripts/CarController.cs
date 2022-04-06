@@ -131,7 +131,10 @@ public class CarController : MonoBehaviour
             PlayerPrefs.SetInt("AdCounter", PlayerPrefs.GetInt("AdCounter", 0) + 1);
             if (PlayerPrefs.GetInt("AdCounter", 0) >= 2)
             {
-                InterstitialAd.interstitialAdEvent.Invoke();
+                //InterstitialAd.interstitialAdEvent.Invoke(); Unity ads için aç
+
+                GoogleAds.adMobInterstitialAdEvent.Invoke();
+                print("REKLAM!!!");
                 PlayerPrefs.SetInt("AdCounter", 0);
             }
         }

@@ -264,9 +264,12 @@ public class UIController : MonoBehaviour
         PlayerPrefs.SetInt("AdCounter", PlayerPrefs.GetInt("AdCounter", 0) + 1);
         if (PlayerPrefs.GetInt("AdCounter", 0) >= 3)
         {
-            if(InterstitialAd.interstitialAdEvent != null)
+            if(GoogleAds.adMobInterstitialAdEvent != null) //InterstitialAd.interstitialAdEvent != null
             {
-                InterstitialAd.interstitialAdEvent.Invoke();
+                //InterstitialAd.interstitialAdEvent.Invoke(); Unity ads kullanýrsan aç
+                GoogleAds.adMobInterstitialAdEvent.Invoke();
+                print("REKLAM!!!");
+
                 PlayerPrefs.SetInt("AdCounter", 0);
             }
         }
