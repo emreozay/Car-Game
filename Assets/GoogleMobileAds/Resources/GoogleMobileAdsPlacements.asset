@@ -15,19 +15,19 @@ MonoBehaviour:
   allPlacements:
   - placementName: Banner
     adType: 0
-    androidAdUnitId: ca-app-pub-3940256099942544/6300978111
+    androidAdUnitId: ca-app-pub-3180537280774596/1106312896
     iOSAdUnitId: 
     persistent: 0
     autoLoadEnabled: 1
   - placementName: Interstitial
     adType: 1
-    androidAdUnitId: ca-app-pub-3940256099942544/1033173712
+    androidAdUnitId: ca-app-pub-3180537280774596/8239569599
     iOSAdUnitId: 
     persistent: 0
     autoLoadEnabled: 0
   - placementName: Rewarded
     adType: 2
-    androidAdUnitId: ca-app-pub-3940256099942544/5224354917
+    androidAdUnitId: ca-app-pub-3180537280774596/5975496195
     iOSAdUnitId: 
     persistent: 0
     autoLoadEnabled: 0
