@@ -5461,10 +5461,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adType: 2
   selectedPlacementIndex: 0
-  androidAdUnitId: ca-app-pub-3940256099942544/5224354917
+  androidAdUnitId: ca-app-pub-3180537280774596/5975496195
   iOSAdUnitId: 
   persistent: 0
-  autoLoadEnabled: 1
+  autoLoadEnabled: 0
   onAdLoaded:
     m_PersistentCalls:
       m_Calls: []
@@ -8909,7 +8909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -135.9, y: -48.42}
+  m_AnchoredPosition: {x: -135.90002, y: -48.420044}
   m_SizeDelta: {x: 236.3, y: 59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2131068578
