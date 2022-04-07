@@ -1519,6 +1519,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1750920654}
+        m_TargetAssemblyTypeName: GoogleMobileAds.Placement.BannerAdGameObject, GoogleMobileAds.Placement
+        m_MethodName: Show
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &250056611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3271,10 +3283,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adType: 1
   selectedPlacementIndex: 0
-  androidAdUnitId: ca-app-pub-3940256099942544/1033173712
+  androidAdUnitId: ca-app-pub-3180537280774596/8239569599
   iOSAdUnitId: 
   persistent: 0
-  autoLoadEnabled: 1
+  autoLoadEnabled: 0
   onAdLoaded:
     m_PersistentCalls:
       m_Calls: []
@@ -4502,6 +4514,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1750920654}
+        m_TargetAssemblyTypeName: GoogleMobileAds.Placement.BannerAdGameObject, GoogleMobileAds.Placement
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &872138251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5461,10 +5485,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adType: 2
   selectedPlacementIndex: 0
-  androidAdUnitId: ca-app-pub-3180537280774596/5975496195
+  androidAdUnitId: ca-app-pub-3940256099942544/5224354917
   iOSAdUnitId: 
   persistent: 0
-  autoLoadEnabled: 0
+  autoLoadEnabled: 1
   onAdLoaded:
     m_PersistentCalls:
       m_Calls: []
@@ -7044,7 +7068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adType: 0
   selectedPlacementIndex: 0
-  androidAdUnitId: ca-app-pub-3940256099942544/6300978111
+  androidAdUnitId: ca-app-pub-3180537280774596/1106312896
   iOSAdUnitId: 
   persistent: 0
   autoLoadEnabled: 1
@@ -8687,6 +8711,18 @@ MonoBehaviour:
       - m_Target: {fileID: 171136547}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: ShopButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1750920654}
+        m_TargetAssemblyTypeName: GoogleMobileAds.Placement.BannerAdGameObject, GoogleMobileAds.Placement
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
