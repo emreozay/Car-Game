@@ -231,7 +231,7 @@ public class UIController : MonoBehaviour
             );
         print("AnalyticsResult Win: " + analyticsResult);
 
-        if (PlayerPrefs.GetInt("Level", 1) != 30 && PlayerPrefs.GetInt("Level", 1) < SceneManager.GetActiveScene().buildIndex + 1)
+        if (/*PlayerPrefs.GetInt("Level", 1) != 30 &&*/ PlayerPrefs.GetInt("Level", 1) < SceneManager.GetActiveScene().buildIndex + 1)
             PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex + 1);
 
         finishPanel.SetActive(true);
